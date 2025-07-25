@@ -6,13 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AF403EF02E32F0CC003AD0DE /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = AF403EEF2E32F0CC003AD0DE /* FirebaseCore */; };
+		AF403EF22E32F0CC003AD0DE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AF403EF12E32F0CC003AD0DE /* FirebaseFirestore */; };
+		AF403EF42E32F0CC003AD0DE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AF403EF32E32F0CC003AD0DE /* FirebaseStorage */; };
+		AF403EF62E32F0CC003AD0DE /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = AF403EF52E32F0CC003AD0DE /* FirebaseStorageCombine-Community */; };
+		AF403F182E32F90C003AD0DE /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = AF403F172E32F90C003AD0DE /* Storage */; };
+		AF403F1D2E32F9F7003AD0DE /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = AF403F1C2E32F9F7003AD0DE /* Supabase */; };
+		AF403F462E33F899003AD0DE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AF403F452E33F895003AD0DE /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AF403EC52E32BE82003AD0DE /* PhotoMomento.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMomento.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF403F452E33F895003AD0DE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AF403F4C2E33FC39003AD0DE /* Exceptions for "PhotoMomento" folder in "PhotoMomento" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AF403EC42E32BE82003AD0DE /* PhotoMomento */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AF403EC72E32BE82003AD0DE /* PhotoMomento */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AF403F4C2E33FC39003AD0DE /* Exceptions for "PhotoMomento" folder in "PhotoMomento" target */,
+			);
 			path = PhotoMomento;
 			sourceTree = "<group>";
 		};
@@ -23,6 +47,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF403EF02E32F0CC003AD0DE /* FirebaseCore in Frameworks */,
+				AF403EF22E32F0CC003AD0DE /* FirebaseFirestore in Frameworks */,
+				AF403F1D2E32F9F7003AD0DE /* Supabase in Frameworks */,
+				AF403EF62E32F0CC003AD0DE /* FirebaseStorageCombine-Community in Frameworks */,
+				AF403F182E32F90C003AD0DE /* Storage in Frameworks */,
+				AF403EF42E32F0CC003AD0DE /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +62,7 @@
 		AF403EBC2E32BE82003AD0DE = {
 			isa = PBXGroup;
 			children = (
+				AF403F452E33F895003AD0DE /* .gitignore */,
 				AF403EC72E32BE82003AD0DE /* PhotoMomento */,
 				AF403EC62E32BE82003AD0DE /* Products */,
 			);
@@ -65,6 +96,12 @@
 			);
 			name = PhotoMomento;
 			packageProductDependencies = (
+				AF403EEF2E32F0CC003AD0DE /* FirebaseCore */,
+				AF403EF12E32F0CC003AD0DE /* FirebaseFirestore */,
+				AF403EF32E32F0CC003AD0DE /* FirebaseStorage */,
+				AF403EF52E32F0CC003AD0DE /* FirebaseStorageCombine-Community */,
+				AF403F172E32F90C003AD0DE /* Storage */,
+				AF403F1C2E32F9F7003AD0DE /* Supabase */,
 			);
 			productName = PhotoMomento;
 			productReference = AF403EC52E32BE82003AD0DE /* PhotoMomento.app */;
@@ -94,6 +131,10 @@
 			);
 			mainGroup = AF403EBC2E32BE82003AD0DE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AF403EEE2E32F0CC003AD0DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AF403F162E32F90C003AD0DE /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AF403EC62E32BE82003AD0DE /* Products */;
 			projectDirPath = "";
@@ -109,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF403F462E33F899003AD0DE /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +169,8 @@
 /* Begin XCBuildConfiguration section */
 		AF403ED12E32BE83003AD0DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = AF403EC72E32BE82003AD0DE /* PhotoMomento */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -190,6 +234,8 @@
 		};
 		AF403ED22E32BE83003AD0DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = AF403EC72E32BE82003AD0DE /* PhotoMomento */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -255,6 +301,7 @@
 				DEVELOPMENT_TEAM = SCAN67V3XX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoMomento/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +331,7 @@
 				DEVELOPMENT_TEAM = SCAN67V3XX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoMomento/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +372,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF403EEE2E32F0CC003AD0DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
+		AF403F162E32F90C003AD0DE /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF403EEF2E32F0CC003AD0DE /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF403EEE2E32F0CC003AD0DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		AF403EF12E32F0CC003AD0DE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF403EEE2E32F0CC003AD0DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		AF403EF32E32F0CC003AD0DE /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF403EEE2E32F0CC003AD0DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		AF403EF52E32F0CC003AD0DE /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF403EEE2E32F0CC003AD0DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+		AF403F172E32F90C003AD0DE /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF403F162E32F90C003AD0DE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		AF403F1C2E32F9F7003AD0DE /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF403F162E32F90C003AD0DE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AF403EBD2E32BE82003AD0DE /* Project object */;
 }
