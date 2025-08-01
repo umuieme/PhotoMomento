@@ -7,9 +7,9 @@
 
 import FirebaseFirestore
 
-struct Memory : Identifiable, Codable {
+struct Memory : Identifiable, Codable, Hashable {
     @DocumentID var id: String?
     var title: String
     var description: String
-    let imageUrl: String
+    var imageUrl: String
 }

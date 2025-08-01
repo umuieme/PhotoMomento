@@ -28,4 +28,16 @@ class MemoryListViewModel : ObservableObject {
         }
         
     }
+    
+    func deleteMemory(_ memory: Memory) async {
+        do {
+            try await MemoryService.shared
+                .deleteMemory(id: memory.id!, imageUrl: memory.imageUrl)
+            memories.removeAll { item in
+                memory.id == item.id
+            }
+        } catch {
+            print("Error deleting memory: \(error.localizedDescription)")
+        }
+    }
 }

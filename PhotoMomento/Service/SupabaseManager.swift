@@ -39,7 +39,14 @@ class SupabaseManager {
     }
 
     func deleteImage(at url: String) async throws {
-        guard let filename = URL(string: url)?.lastPathComponent else { return }
-        try await supabase.storage.from("memories").remove(paths: [filename])
+        do {
+            guard let filename = URL(string: url)?.lastPathComponent else { return }
+            let result = try await supabase.storage
+                .from(bucketName)
+                .remove(paths: [filename])
+            print("Image deleted: \(result)")
+        } catch {
+            print("Error deleting image: \(error.localizedDescription)")
+        }
     }
 }

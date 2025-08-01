@@ -2,74 +2,45 @@
 //  MemoryListView.swift
 //  PhotoMomento
 //
-//  Created by Umesh Basnet on 2025-07-24.
+//  Created by Umesh Basnet on 2025-08-01.
 //
 
 import SwiftUI
 
 struct MemoryListView: View {
-    @StateObject private var viewModel = MemoryListViewModel()
+    var memories: [Memory]
+    let onEdit: (Memory) -> Void
+    let onDelete: (Memory) -> Void
+
     var body: some View {
-        NavigationStack {
-            Group {
-                if viewModel.isLoading {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if let error = viewModel.errorMessage {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if viewModel.memories.isEmpty {
-                    Text("No memories found.")
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    List {
-                        ForEach(viewModel.memories) { item in
-                            MomentoItemView(momento: item)
-                                .listRowSeparator(Visibility.hidden)
-                                .listRowInsets(.init())
 
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 16)
-                        .background(.gray.opacity(0.04))
+       
 
-                    }
-                    .listStyle(.plain)
-                    .background(.gray.opacity(0.04))
-                    .scrollIndicators(.hidden)
+        List {
+            ForEach(memories) { item in
+                MomentoItemView(
+                    momento: item,
+                    onEdit: onEdit,
+                    onDelete: onDelete
+                )
 
-                }
-            }
-            .padding(0)
-            .background(.gray.opacity(0.04))
-
-            .navigationTitle("My Memories")
-            .navigationBarTitleDisplayMode(.inline)
-
-            .toolbar {
-                NavigationLink {
-                    AddMemoryFormScreen()
-                } label: {
-                    Image(systemName: "plus")
-                }
+                .background(.gray.opacity(0.04))
+                .listRowSeparator(Visibility.hidden)
+                .listRowInsets(.init())
 
             }
-            .onAppear {
-                Task {
-                    print(Config.SUPABASE_KEY)
-                    print(Config.SUPABASE_URL)
-                    await viewModel.loadMemories()
-                }
-            }
+
         }
+        .listStyle(.plain)
+        .background(.gray.opacity(0.04))
+        .scrollIndicators(.hidden)
     }
-    
 }
 
 #Preview {
-    MemoryListView()
+    MemoryListView(
+        memories: Dummy.memories(),
+        onEdit: { _ in },
+        onDelete: { _ in }
+    )
 }

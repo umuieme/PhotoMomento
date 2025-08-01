@@ -19,6 +19,17 @@ class AddMemoryViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var imageSelection: PhotosPickerItem?
+    @Published var remoteImage: UIImage?
+
+    private var memoryToEdit: Memory?
+
+    init(editMemory: Memory? = nil) {
+        if editMemory != nil {
+            self.memoryToEdit = editMemory
+            self.title = editMemory!.title
+            self.description = editMemory!.description
+        }
+    }
 
     private let memoryService = MemoryService.shared
 
@@ -30,14 +41,50 @@ class AddMemoryViewModel: ObservableObject {
             type: Data.self)
         {
             if let image = UIImage(data: data) {
-
-                self.image = image
+                await MainActor.run {
+                    self.image = image
+                }
 
             }
         }
     }
 
-    func addMemory() async {
+    func loadRemoteImage() async {
+        guard let urlString = memoryToEdit?.imageUrl,
+            let url = URL(string: urlString)
+        else {
+            return
+        }
+        defer {
+            isImageLoading = false
+        }
+        isImageLoading = true
+
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            if let downloadedImage = UIImage(data: data) {
+                self.remoteImage = downloadedImage  // Store the remote image
+            } else {
+                print("Could not create UIImage from data for remote image.")
+                self.errorMessage = "Failed to load remote image."
+            }
+        } catch {
+            print("Error loading remote image: \(error.localizedDescription)")
+            self.errorMessage = "Failed to load image from URL."
+        }
+
+    }
+    
+    func savememory() async {
+        if let memoryToEdit = memoryToEdit {
+            await editMemory(memoryToEdit: memoryToEdit)
+        } else {
+            await addMemory()
+        }
+    }
+    
+
+    private func addMemory() async {
         defer {
             isLoading = false
         }
@@ -55,6 +102,33 @@ class AddMemoryViewModel: ObservableObject {
         } catch let error {
             print("Error adding memory: \(error.localizedDescription)")
             errorMessage = "Failed to add memory. Please try again later."
+        }
+
+    }
+
+    private func editMemory(memoryToEdit: Memory) async {
+
+        defer {
+            isLoading = false
+        }
+        isLoading = true
+        guard !title.isEmpty, !description.isEmpty else {
+            errorMessage = "Please fill all required fields."
+            return
+        }
+        do {
+            if let id = memoryToEdit.id {
+                try await memoryService
+                    .editMemory(
+                        id: id,
+                        title: title,
+                        description: description,
+                        imageUrl: memoryToEdit.imageUrl,
+                        image: image
+                    )
+            }
+        } catch {
+            errorMessage = "Failed to edit memory. Please try again later."
         }
 
     }
